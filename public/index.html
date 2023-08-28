@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <title>SVG Display</title>
+        <style>
+            body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+        img {
+            width: 100vw;
+            height: 100vh;
+            /* si on met pas cela, l'image est stretchée en therorie, mais en pratique, il faut verifier ce que ca fait, il n'a pas de diff 
+            ==> si on le laisse on doit mettre background noir ...*/
+            object-fit: contain; /* this will cover the entire viewport */
+        }
+        </style>
+    </head>
+</head>
+<body>
+    <!-- on ne peut pas utiliser object sinon la page "glitch" lors du changemenet de l'image <object data="rep.svg" type="image/svg+xml"></object> -->
+    <img id="current-image" src="http://localhost:3000" alt="Current Image">
+    
+
+
+    <script>
+        async function loadCurrentImage() {
+            oldImage = document.getElementById('current-image').src;
+            // Fetch the current image from the server
+            fetch('http://localhost:3000/api/getImage', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:3000',
+                    'Access-Control-Allow-Credentials': 'true'
+                }
+            }).then(data => data.json()
+            ).then(data => {
+                if (oldImage == 'http://localhost:3000/' + data.currentImage) {
+                    console.log("same image");
+                } else {
+                    document.getElementById('current-image').src =  'http://localhost:3000/' + data.currentImage;
+                     
+                }
+
+            }).catch(error => {
+                console.error('Error fetching current image:', error);
+            });
+        }
+
+        setInterval(() => {
+        // Fetch and display the current image on page load
+        loadCurrentImage();
+            console.log("loaded");
+        }, 500);
+  
+
+    </script>
+</body>
+
+</html>
