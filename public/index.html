@@ -19,6 +19,7 @@
         img {
             width: 100vw;
             height: 100vh;
+            transform: scaleX(-1); /* flip the image horizontally */
             /* si on met pas cela, l'image est stretchée en therorie, mais en pratique, il faut verifier ce que ca fait, il n'a pas de diff 
             ==> si on le laisse on doit mettre background noir ...*/
             object-fit: contain; /* this will cover the entire viewport */
