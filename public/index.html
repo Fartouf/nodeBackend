@@ -15,7 +15,6 @@
             width: 100%;
             overflow: hidden;
             background-color: black;
-            transform: rotate(180deg); /* flip the image horizontally */
         }
         img {
             width: 100vw;
@@ -24,12 +23,15 @@
             ==> si on le laisse on doit mettre background noir ...*/
             object-fit: contain; /* this will cover the entire viewport */
         }
+        .rotate {
+            transform: rotate(180deg); /* flip the image horizontally */
+        }
         </style>
     </head>
 </head>
 <body>
     <!-- on ne peut pas utiliser object sinon la page "glitch" lors du changemenet de l'image <object data="rep.svg" type="image/svg+xml"></object> -->
-    <img id="current-image" src="https://gray-mushy-scallop.cyclic.app" alt="Current Image">
+    <img id="current-image" class = "rotate" src="https://gray-mushy-scallop.cyclic.app" alt="Current Image">
     
 
 
