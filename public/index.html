@@ -31,7 +31,7 @@
 </head>
 <body>
     <!-- on ne peut pas utiliser object sinon la page "glitch" lors du changemenet de l'image <object data="rep.svg" type="image/svg+xml"></object> -->
-    <img id="current-image"  src="https://gray-mushy-scallop.cyclic.app" alt="Current Image">
+    <img id="current-image"  src="https://backendcalvino.onrender.com" alt="Current Image">
     
 
 
@@ -39,19 +39,19 @@
         async function loadCurrentImage() {
             oldImage = document.getElementById('current-image').src;
             // Fetch the current image from the server
-            fetch('https://backendcalvino.onrender.comapi/getImage', {
+            fetch('https://backendcalvino.onrender.com/api/getImage', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'https://gray-mushy-scallop.cyclic.app',
+                    'Access-Control-Allow-Origin': 'https://backendcalvino.onrender.com',
                     'Access-Control-Allow-Credentials': 'true'
                 }
             }).then(data => data.json()
             ).then(data => {
-                if (oldImage == 'https://backendcalvino.onrender.com' + data.currentImage) {
+                if (oldImage == 'https://backendcalvino.onrender.com/' + data.currentImage) {
                     console.log("same image");
                 } else {
-                    document.getElementById('current-image').src =  'https://backendcalvino.onrender.com' + data.currentImage;
+                    document.getElementById('current-image').src =  'https://backendcalvino.onrender.com/' + data.currentImage;
                      
                 }
 
