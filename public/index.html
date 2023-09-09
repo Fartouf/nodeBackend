@@ -39,7 +39,7 @@
         async function loadCurrentImage() {
             oldImage = document.getElementById('current-image').src;
             // Fetch the current image from the server
-            fetch('https://gray-mushy-scallop.cyclic.app/api/getImage', {
+            fetch('https://backendcalvino.onrender.comapi/getImage', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,10 +48,10 @@
                 }
             }).then(data => data.json()
             ).then(data => {
-                if (oldImage == 'https://gray-mushy-scallop.cyclic.app/' + data.currentImage) {
+                if (oldImage == 'https://backendcalvino.onrender.com' + data.currentImage) {
                     console.log("same image");
                 } else {
-                    document.getElementById('current-image').src =  'https://gray-mushy-scallop.cyclic.app/' + data.currentImage;
+                    document.getElementById('current-image').src =  'https://backendcalvino.onrender.com' + data.currentImage;
                      
                 }
 
