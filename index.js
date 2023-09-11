@@ -12,7 +12,7 @@ const corsOptions ={
     optionSuccessStatus:200,
  }
 
-let currentImage = 'rep.svg';  // default image
+let currentImage = 'map2.svg';  // default image
 
 // Serve static files from the 'public' directory --> nous permet de "load les images et la page html"
 app.use(express.static(path.join(__dirname, 'public')));
